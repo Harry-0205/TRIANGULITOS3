@@ -72,9 +72,13 @@
             else if(Bs!=Ld1||Bs!=Ld2||Ld1!=Ld2)
             {
                 document.getElementById("TR").value = "Escaleno";
-                
+                let AN = Math.acos((Ld1**2+Ld2**2-Bs**2)/(2*Ld1*Ld2))*(180/Math.PI)
+                let AN1 =Math.acos((Ld1**2+Ld2**2-Bs**2)/(2*Ld1*Ld2))*(180/Math.PI)
+                let AN2=Math.acos((Ld1**2+Ld2**2-Bs**2)/(2*Ld1*Ld2))*(180/Math.PI)
 
-                document.getElementById("AN").value = "Por favor, ingresa los ángulos.";
+
+                document.getElementById("AN").value = AN1.toFixed(2) + "° ; " + AN2.toFixed(2) + "°" + "° ; " + AN2.toFixed(2) + "°";
+                return;
             }
             
         }
