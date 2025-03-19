@@ -1,0 +1,39 @@
+body{
+    background-color: #E3F2FD;
+    text-align: center;
+}
+.Ti{
+    background-color: #FFEBEE;
+    border: #FF7043 solid;
+    h1{
+        color: #0D47A1;
+    }
+    margin-bottom: 1rem;
+}
+.conteiner{
+    background-color: #FFEBEE;
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    border: #FF7043 solid;
+    h2{
+        color: #0D47A1;
+    }
+    gap: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.sec{
+    border: #FF7043 solid;
+    width: 95%;
+    margin: auto;
+    padding-bottom: 1rem;
+}
+
+.img{
+    width: 12rem;
+    margin: auto;
+    margin-top: 1rem;
+}
+button{
+    margin-top: 1rem;
+}

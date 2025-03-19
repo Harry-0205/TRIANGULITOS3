@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identifica tu Triángulo</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="Ti">
+        <header>
+            <h1>¿Qué Triángulo Tienes? Identifícalo por Sus Lados</h1>
+        </header>
+    </div>
+    <main>
+        <div class="conteiner">
+            <section class="sec">
+                <h2>Ingrese los lados de su triángulo:</h2>
+                <div>
+                    <label for="BaS">Base:</label>
+                </div>
+                <input type="number" id="BaS" placeholder="BASE">
+                <div>
+                    <label for="LD1">Lado 1:</label>
+                   
+                </div>
+                <input type="number" id="LD1" placeholder="LADO">
+                <div>
+                    <label for="LD2">Lado 2:</label>
+                    
+                </div>
+                <input type="number" id="LD2" placeholder="LADO">
+                <div>
+                    <button onclick="CL()">Confirmar</button>
+                </div>
+            </section>
+            <section class="sec">
+                <h2>Su triángulo es:</h2>
+                <input type="text" id="TR" readonly>
+                <h2>Sus ángulos son:</h2>
+                <input type="text" id="AN" readonly>
+                <div>
+                    <img src="IMG/giphy.gif" alt="" class="img">
+                </div>
+            </section>
+        </div>
+    </main>
+    <script>
+        function CL() {
+            let Bs = parseFloat(document.getElementById("BaS").value); 
+            let Ld1 = parseFloat(document.getElementById("LD1").value); 
+            let Ld2 = parseFloat(document.getElementById("LD2").value); 
+            if (isNaN(Bs) || isNaN(Ld1) || isNaN(Ld2) || Bs <= 0 || Ld1 <= 0 || Ld2 <= 0) {
+                document.getElementById("TR").value = "Ingresa un número válido.";
+                document.getElementById("AN").value = "Ingresa un número válido.";
+                return;
+            }
+            if (Bs == Ld1 && Ld1 == Ld2) {
+                document.getElementById("TR").value = "Equilátero";
+                document.getElementById("AN").value = "60°";
+                return;
+            }
+            else if (Bs == Ld1 || Bs == Ld2 || Ld1 == Ld2) {
+                document.getElementById("TR").value = "Isósceles";
+            
+                let AN = (2 * Ld1 **2 - Bs **2) / (2 * Ld1 **2); 
+                let AN1 = Math.acos(AN) * (180 / Math.PI);
+                let AN2 = (180 - AN1) / 2;
+                document.getElementById("AN").value = AN1.toFixed(2) + "° ; " + AN2.toFixed(2) + "°" + "° ; " + AN2.toFixed(2) + "°";
+                return;
+            }
+            else if(Bs!=Ld1||Bs!=Ld2||Ld1!=Ld2)
+            {
+                document.getElementById("TR").value = "Escaleno";
+                
+
+                document.getElementById("AN").value = "Por favor, ingresa los ángulos.";
+            }
+            
+        }
+    </script>
+</body>
+</html>
