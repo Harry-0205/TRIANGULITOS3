@@ -37,6 +37,7 @@
             <section class="sec">
                 <h2>Su triángulo es:</h2>
                 <input type="text" id="TR" readonly>
+                <input type="text" id="ANTR" readonly>
                 <h2>Sus ángulos son:</h2>
                 <input type="text" id="AN" readonly>
                 <div>
@@ -59,44 +60,66 @@
                 let AN = Math.acos((Ld1**2+Ld2**2-Bs**2)/(2*Ld1*Ld2))*(180/Math.PI)
                 let AN1 =Math.acos((Bs**2+Ld2**2-Ld1**2)/(2*Bs*Ld2))*(180/Math.PI)
                 let AN2=Math.acos((Bs**2+Ld1**2-Ld2**2)/(2*Ld1*Bs))*(180/Math.PI)  
-                if(AN==60&&AN1==60&&AN2==60)
+                if(AN<=90&&AN1<=90&&AN2<=90)
                 {
                     document.getElementById("TR").value = "Equilátero";
-                    document.getElementById("AN").value = "60°";
-                    return;    
+                    document.getElementById("ANTR").value = "acutangulo";
+                    document.getElementById("AN").value = AN1.toFixed(2) + "° ; " + AN2.toFixed(2) + "°" + "° ; " + AN2.toFixed(2) + "°";
+                    return;
                 }
-                if
                 
             }
-            else if (Bs == Ld1 || Bs == Ld2 || Ld1 == Ld2) {
-                document.getElementById("TR").value = "Isósceles";
-            
-                let AN = (2 * Ld1 **2 - Bs **2) / (2 * Ld1 **2); 
-                let AN1 = Math.acos(AN) * (180 / Math.PI);
-                let AN2 = (180 - AN1) / 2;
-                document.getElementById("AN").value = AN1.toFixed(2) + "° ; " + AN2.toFixed(2) + "°" + "° ; " + AN2.toFixed(2) + "°";
-                return;
-            }
-            else if(Bs!=Ld1||Bs!=Ld2||Ld1!=Ld2)
+            else if (Bs == Ld1 || Bs == Ld2 || Ld1 == Ld2)
             {
-                
+                document.getElementById("TR").value = "isoceles";
                 let AN = Math.acos((Ld1**2+Ld2**2-Bs**2)/(2*Ld1*Ld2))*(180/Math.PI)
                 let AN1 =Math.acos((Bs**2+Ld2**2-Ld1**2)/(2*Bs*Ld2))*(180/Math.PI)
                 let AN2=Math.acos((Bs**2+Ld1**2-Ld2**2)/(2*Ld1*Bs))*(180/Math.PI)  
-                if(AN2==90){
-                    document.getElementById("TR").value = "rectanculo";
+                if(AN<90&&AN1<90&&AN2<90)
+                {
+                    document.getElementById("ANTR").value = "acutangulo";
                     document.getElementById("AN").value = AN.toFixed(2) + "° ; " + AN1.toFixed(2) + "°" + "° ; " + AN2.toFixed(2) + "°";
                 return;
                 }
-                else if(AN2!=90)
+                else if(AN==90||AN1==90||AN2==90)
                 {
-                    document.getElementById("TR").value = "Escaleno";
+                    document.getElementById("ANTR").value = "rectangulo";                   
+                    document.getElementById("AN").value = AN.toFixed(2) + "° ; " + AN1.toFixed(2) + "°" + "° ; " + AN2.toFixed(2) + "°";
+                    return;
+                }
+                else if(AN>90||AN1>90||AN2>90)
+                {
+                    document.getElementById("ANTR").value = "obtusangulo";                 
                     document.getElementById("AN").value = AN.toFixed(2) + "° ; " + AN1.toFixed(2) + "°" + "° ; " + AN2.toFixed(2) + "°";
                     return;
                 }
                 
             }
-           
+            else if(Bs!=Ld1||Bs!=Ld2||Ld1!=Ld2)
+            {
+                document.getElementById("TR").value = "Escaleno";
+                let AN = Math.acos((Ld1**2+Ld2**2-Bs**2)/(2*Ld1*Ld2))*(180/Math.PI)
+                let AN1 =Math.acos((Bs**2+Ld2**2-Ld1**2)/(2*Bs*Ld2))*(180/Math.PI)
+                let AN2=Math.acos((Bs**2+Ld1**2-Ld2**2)/(2*Ld1*Bs))*(180/Math.PI)  
+                if(AN<90&&AN1<90&&AN2<90)
+                {
+                    document.getElementById("ANTR").value = "acutangulo";
+                    document.getElementById("AN").value = AN.toFixed(2) + "° ; " + AN1.toFixed(2) + "°" + "° ; " + AN2.toFixed(2) + "°";
+                return;
+                }
+                else if(AN>90||AN1>90||AN2>90)
+                {
+                    document.getElementById("ANTR").value = "obtusangulo";                 
+                    document.getElementById("AN").value = AN.toFixed(2) + "° ; " + AN1.toFixed(2) + "°" + "° ; " + AN2.toFixed(2) + "°";
+                    return;
+                }
+                else if(AN==90||AN1==90||AN2==90)
+                {
+                    document.getElementById("ANTR").value = "rectangulo";                   
+                    document.getElementById("AN").value = AN.toFixed(2) + "° ; " + AN1.toFixed(2) + "°" + "° ; " + AN2.toFixed(2) + "°";
+                    return;
+                }
+            }
         }
     </script>
 </body>
