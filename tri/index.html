@@ -56,9 +56,17 @@
                 return;
             }
             if (Bs == Ld1 && Ld1 == Ld2) {
-                document.getElementById("TR").value = "Equilátero";
-                document.getElementById("AN").value = "60°";
-                return;
+                let AN = Math.acos((Ld1**2+Ld2**2-Bs**2)/(2*Ld1*Ld2))*(180/Math.PI)
+                let AN1 =Math.acos((Bs**2+Ld2**2-Ld1**2)/(2*Bs*Ld2))*(180/Math.PI)
+                let AN2=Math.acos((Bs**2+Ld1**2-Ld2**2)/(2*Ld1*Bs))*(180/Math.PI)  
+                if(AN==60&&AN1==60&&AN2==60)
+                {
+                    document.getElementById("TR").value = "Equilátero";
+                    document.getElementById("AN").value = "60°";
+                    return;    
+                }
+                if
+                
             }
             else if (Bs == Ld1 || Bs == Ld2 || Ld1 == Ld2) {
                 document.getElementById("TR").value = "Isósceles";
@@ -71,16 +79,24 @@
             }
             else if(Bs!=Ld1||Bs!=Ld2||Ld1!=Ld2)
             {
-                document.getElementById("TR").value = "Escaleno";
+                
                 let AN = Math.acos((Ld1**2+Ld2**2-Bs**2)/(2*Ld1*Ld2))*(180/Math.PI)
-                let AN1 =Math.acos((Ld1**2+Ld2**2-Bs**2)/(2*Ld1*Ld2))*(180/Math.PI)
-                let AN2=Math.acos((Ld1**2+Ld2**2-Bs**2)/(2*Ld1*Ld2))*(180/Math.PI)
-
-
-                document.getElementById("AN").value = AN1.toFixed(2) + "° ; " + AN2.toFixed(2) + "°" + "° ; " + AN2.toFixed(2) + "°";
+                let AN1 =Math.acos((Bs**2+Ld2**2-Ld1**2)/(2*Bs*Ld2))*(180/Math.PI)
+                let AN2=Math.acos((Bs**2+Ld1**2-Ld2**2)/(2*Ld1*Bs))*(180/Math.PI)  
+                if(AN2==90){
+                    document.getElementById("TR").value = "rectanculo";
+                    document.getElementById("AN").value = AN.toFixed(2) + "° ; " + AN1.toFixed(2) + "°" + "° ; " + AN2.toFixed(2) + "°";
                 return;
+                }
+                else if(AN2!=90)
+                {
+                    document.getElementById("TR").value = "Escaleno";
+                    document.getElementById("AN").value = AN.toFixed(2) + "° ; " + AN1.toFixed(2) + "°" + "° ; " + AN2.toFixed(2) + "°";
+                    return;
+                }
+                
             }
-            
+           
         }
     </script>
 </body>
