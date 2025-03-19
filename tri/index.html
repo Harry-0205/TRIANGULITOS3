@@ -46,35 +46,38 @@
             </section>
         </div>
     </main>
+    <div>
+        <footer class="fot">
+            <p><h2>programa hecho por:<br><br>Miguel Angel Sanchez Moreno<br><br>Jilian Smith Hernandez Pineda<br><br>Carlos Alberto Caro Quezada</h2></p>
+        </footer>
+    </div>
     <script>
         function CL() {
             let Bs = parseFloat(document.getElementById("BaS").value); 
             let Ld1 = parseFloat(document.getElementById("LD1").value); 
             let Ld2 = parseFloat(document.getElementById("LD2").value); 
+
+            let AN = Math.acos((Ld1**2+Ld2**2-Bs**2)/(2*Ld1*Ld2))*(180/Math.PI)
+            let AN1 =Math.acos((Bs**2+Ld2**2-Ld1**2)/(2*Bs*Ld2))*(180/Math.PI)
+            let AN2=Math.acos((Bs**2+Ld1**2-Ld2**2)/(2*Ld1*Bs))*(180/Math.PI) 
+
             if (isNaN(Bs) || isNaN(Ld1) || isNaN(Ld2) || Bs <= 0 || Ld1 <= 0 || Ld2 <= 0) {
                 document.getElementById("TR").value = "Ingresa un número válido.";
                 document.getElementById("AN").value = "Ingresa un número válido.";
                 return;
             }
-            if (Bs == Ld1 && Ld1 == Ld2) {
-                let AN = Math.acos((Ld1**2+Ld2**2-Bs**2)/(2*Ld1*Ld2))*(180/Math.PI)
-                let AN1 =Math.acos((Bs**2+Ld2**2-Ld1**2)/(2*Bs*Ld2))*(180/Math.PI)
-                let AN2=Math.acos((Bs**2+Ld1**2-Ld2**2)/(2*Ld1*Bs))*(180/Math.PI)  
+            if (Bs == Ld1 && Ld1 == Ld2) { 
                 if(AN<=90&&AN1<=90&&AN2<=90)
                 {
                     document.getElementById("TR").value = "Equilátero";
                     document.getElementById("ANTR").value = "acutangulo";
                     document.getElementById("AN").value = AN1.toFixed(2) + "° ; " + AN2.toFixed(2) + "°" + "° ; " + AN2.toFixed(2) + "°";
                     return;
-                }
-                
+                }              
             }
             else if (Bs == Ld1 || Bs == Ld2 || Ld1 == Ld2)
             {
                 document.getElementById("TR").value = "isoceles";
-                let AN = Math.acos((Ld1**2+Ld2**2-Bs**2)/(2*Ld1*Ld2))*(180/Math.PI)
-                let AN1 =Math.acos((Bs**2+Ld2**2-Ld1**2)/(2*Bs*Ld2))*(180/Math.PI)
-                let AN2=Math.acos((Bs**2+Ld1**2-Ld2**2)/(2*Ld1*Bs))*(180/Math.PI)  
                 if(AN<90&&AN1<90&&AN2<90)
                 {
                     document.getElementById("ANTR").value = "acutangulo";
@@ -97,10 +100,7 @@
             }
             else if(Bs!=Ld1||Bs!=Ld2||Ld1!=Ld2)
             {
-                document.getElementById("TR").value = "Escaleno";
-                let AN = Math.acos((Ld1**2+Ld2**2-Bs**2)/(2*Ld1*Ld2))*(180/Math.PI)
-                let AN1 =Math.acos((Bs**2+Ld2**2-Ld1**2)/(2*Bs*Ld2))*(180/Math.PI)
-                let AN2=Math.acos((Bs**2+Ld1**2-Ld2**2)/(2*Ld1*Bs))*(180/Math.PI)  
+                document.getElementById("TR").value = "Escaleno"; 
                 if(AN<90&&AN1<90&&AN2<90)
                 {
                     document.getElementById("ANTR").value = "acutangulo";

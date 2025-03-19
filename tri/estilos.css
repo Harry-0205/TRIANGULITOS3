@@ -10,6 +10,11 @@ body{
     }
     margin-bottom: 1rem;
 }
+.fot{
+    background-color: #FFEBEE;
+    border: #FF7043 solid;
+    margin-top: 1rem;
+}
 .conteiner{
     background-color: #FFEBEE;
     display: grid;
